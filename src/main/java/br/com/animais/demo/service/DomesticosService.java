@@ -4,6 +4,7 @@ import br.com.animais.demo.model.Domesticos;
 import br.com.animais.demo.repository.DomesticosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -25,9 +26,16 @@ public class DomesticosService implements CrudService<Domesticos> {
     }
 
     @Override
+    public Domesticos getById(Long id) {
+        return domesticosRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Animal não encontrado com id " + id));
+    }
+
+    @Override
     public Domesticos criar(Domesticos entity) {
         return null;
     }
+
 
     @Override
     public Domesticos atualizar(Long id, Domesticos upadatedEntity) {
