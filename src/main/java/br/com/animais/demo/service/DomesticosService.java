@@ -32,8 +32,8 @@ public class DomesticosService implements CrudService<Domesticos> {
         return null;
     }
 
-
-    private boolean verificaID(Long id) {
+    @Override
+    public boolean verificaID(Long id) {
         return this.domesticosRepository.existsById(id);
     }
 
