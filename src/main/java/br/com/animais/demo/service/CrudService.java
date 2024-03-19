@@ -4,14 +4,9 @@ import br.com.animais.demo.model.Domesticos;
 
 import java.util.List;
 
-public interface CrudService<T> {
+public interface CrudService<T extends Domesticos> {
     List<T> listar();
-    T get(Long id);
-    T getById(Long id);
     T criar(T entity);
     T atualizar(Long id, T upadatedEntity);
-
-    Domesticos update(Long id, Domesticos updatedDomesticos);
-
     boolean delete(Long id);
 }

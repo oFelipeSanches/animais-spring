@@ -4,7 +4,6 @@ import br.com.animais.demo.model.Domesticos;
 import br.com.animais.demo.repository.DomesticosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -14,55 +13,34 @@ public class DomesticosService implements CrudService<Domesticos> {
     @Autowired
     private DomesticosRepository domesticosRepository;
 
-
     @Override
     public List<Domesticos> listar() {
-        return null;
+        return domesticosRepository.findAll();
     }
 
     @Override
-    public Domesticos get(Long id) {
-        return null;
+    public Domesticos criar(Domesticos domesticos) {
+        return domesticosRepository.save(domesticos);
     }
 
     @Override
-    public Domesticos getById(Long id) {
-        return domesticosRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Animal não encontrado com id " + id));
-    }
-
-    @Override
-    public Domesticos criar(Domesticos entity) {
+    public Domesticos atualizar(Long id, Domesticos domesticos) {
+        if(domesticosRepository.existsById(id)) {
+            domesticos.setId(id);
+            return domesticosRepository.save(domesticos);
+        }
         return null;
     }
 
-
-    @Override
-    public Domesticos atualizar(Long id, Domesticos upadatedEntity) {
-        return null;
-    }
 
     private boolean verificaID(Long id) {
         return this.domesticosRepository.existsById(id);
     }
 
     @Override
-    public Domesticos update(Long id, Domesticos updatedDomesticos) {
-        Domesticos existingDomesticos = get(id);
-
-        existingDomesticos.setTipo(updatedDomesticos.getTipo());
-        existingDomesticos.setNome(updatedDomesticos.getNome());
-        existingDomesticos.setIdade(updatedDomesticos.getIdade());
-        existingDomesticos.setSexo(updatedDomesticos.getSexo());
-
-        return domesticosRepository.save(existingDomesticos);
-    }
-
-
-    @Override
     public boolean delete(Long id) {
-        if (this.verificaID(id)) {
-            this.domesticosRepository.deleteById(id);
+        if(domesticosRepository.existsById(id)) {
+            domesticosRepository.deleteById(id);
             return true;
         } else {
             return false;
