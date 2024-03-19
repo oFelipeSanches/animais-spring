@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/domesticos")
@@ -45,6 +46,11 @@ public class DomesticosController {
         }
         String mensagem = "O id informado não existe na base de dados";
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagem);
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Domesticos> buscaPorID(@PathVariable Long id) {
+        return this.domesticosService.buscaPorID(id);
     }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DomesticosService implements CrudService<Domesticos> {
@@ -47,4 +48,7 @@ public class DomesticosService implements CrudService<Domesticos> {
         }
     }
 
+    public Optional<Domesticos>buscaPorID(Long id) {
+        return this.domesticosRepository.findById(id);
+    }
 }
