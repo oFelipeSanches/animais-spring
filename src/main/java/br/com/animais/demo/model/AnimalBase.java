@@ -1,12 +1,20 @@
 package br.com.animais.demo.model;
 
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @MappedSuperclass
 public abstract class AnimalBase {
+    @NotNull
+    @Pattern(regexp = "^(Cachorro|Gato)$", message = "Apenas Cachorro ou Gato é possível")
     private String tipo;
+    @NotNull
     private String nome;
+    @NotNull
     private int idade;
+    @NotNull
+    @Pattern(regexp = "^[MF]$", message = "Apenas M ou F de Masculino ou Feminino serão aceitas")
     private String sexo;
 
     public AnimalBase() {
