@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Inheritance(
@@ -18,12 +20,25 @@ public class Domesticos extends AnimalBase {
     )
     private Long id;
 
+    @NotNull
+    @Pattern(regexp = "^[SN]$", message = "Apenas S para sim ou N não indicando se o animal é docil")
+    private String docil;
+
     public Domesticos() {
     }
 
-    public Domesticos(String tipo, String nome, int idade, String sexo, Long id) {
-        super(tipo, nome, idade, sexo);
+    public Domesticos(String nome, int idade, String sexo, String docil, Long id) {
+        super(nome, idade, sexo);
+        this.docil = docil;
         this.id = id;
+    }
+
+    public String getDocil() {
+        return docil;
+    }
+
+    public void setDocil(String docil) {
+        this.docil = docil;
     }
 
     public Long getId() {
