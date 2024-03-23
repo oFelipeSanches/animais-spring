@@ -21,7 +21,7 @@ public class Domesticos extends AnimalBase {
     private Long id;
 
     @NotNull
-    @Pattern(regexp = "^[SN]$", message = "Apenas S para sim ou N não indicando se o animal é docil")
+    @Pattern(regexp = "^[SN]$", message = "Apenas S para sim ou N para não indicando se o animal é docil")
     private String docil;
 
     public Domesticos() {

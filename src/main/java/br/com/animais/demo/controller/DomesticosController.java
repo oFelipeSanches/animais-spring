@@ -1,7 +1,6 @@
 package br.com.animais.demo.controller;
 
 import br.com.animais.demo.model.Domesticos;
-import br.com.animais.demo.service.CrudService;
 import br.com.animais.demo.service.DomesticosService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
