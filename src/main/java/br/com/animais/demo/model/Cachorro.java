@@ -13,6 +13,9 @@ public class Cachorro extends Domesticos {
         this.raca = raca;
     }
 
+    public Cachorro() {
+    }
+
     public String getRaca() {
         return raca;
     }

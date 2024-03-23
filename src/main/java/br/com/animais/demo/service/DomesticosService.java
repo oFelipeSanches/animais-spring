@@ -26,7 +26,7 @@ public class DomesticosService implements CrudService<Domesticos> {
 
     @Override
     public Domesticos atualizar(Long id, Domesticos domesticos) {
-        if(domesticosRepository.existsById(id)) {
+        if(verificaID(id)) {
             domesticos.setId(id);
             return domesticosRepository.save(domesticos);
         }
@@ -40,7 +40,7 @@ public class DomesticosService implements CrudService<Domesticos> {
 
     @Override
     public boolean delete(Long id) {
-        if(domesticosRepository.existsById(id)) {
+        if(verificaID(id)) {
             domesticosRepository.deleteById(id);
             return true;
         } else {
