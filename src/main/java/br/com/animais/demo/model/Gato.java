@@ -13,6 +13,9 @@ public class Gato extends Domesticos {
         this.corPelagem = corPelagem;
     }
 
+    public Gato() {
+    }
+
     public String getCorPelagem() {
         return corPelagem;
     }

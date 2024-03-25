@@ -49,7 +49,7 @@ public class DomesticosController {
 
     @GetMapping("/{id}")
     public Optional<Domesticos> buscaPorID(@PathVariable Long id) {
-        return this.domesticosService.buscaPorID(id);
+            return this.domesticosService.buscaPorID(id);
     }
 
 }
